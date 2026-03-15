@@ -1,6 +1,12 @@
 PRODUCT = nc
-PLATFORMS = adam apple2 atari c64 coco vic20
+PLATFORMS += adam
+PLATFORMS += apple2
+PLATFORMS += atari
+PLATFORMS += c64
+PLATFORMS += coco
+PLATFORMS += msx
 #PLATFORMS += rc2014
+PLATFORMS += vic20
 
 # You can run 'make <platform>' to build for a specific platform,
 # or 'make <platform>/<target>' for a platform-specific target.
@@ -19,7 +25,7 @@ SRC_DIRS = src src/%PLATFORM%
 # - a URL to a git repo
 # - empty which will use whatever is the latest
 # - undefined, no fujinet-lib will be used
-FUJINET_LIB = 
+FUJINET_LIB = https://github.com/FozzTexx/fujinet-lib-experimental.git
 
 # Some platforms don’t use FUJINET_LIB; set this to allow builds to continue
 # even if the library isn’t present.
@@ -33,10 +39,13 @@ PLATFORM_COMBOS = \
   msxrom+=msx \
   msxdos+=msx
 
-include makefiles/toplevel-rules.mk
+include hirestxt-mod-lib.mk
+include mekkogx/toplevel-rules.mk
 
 # If you need to add extra platform-specific steps, do it below:
 #   coco/r2r:: coco/custom-step1
 #   coco/r2r:: coco/custom-step2
 # or
 #   apple2/disk: apple2/custom-step1 apple2/custom-step2
+
+EXTRA_C_DEPS_COCO = .get_hirestxt_lib
