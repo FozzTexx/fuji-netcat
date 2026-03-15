@@ -4,7 +4,7 @@ PLATFORMS += apple2
 PLATFORMS += atari
 PLATFORMS += c64
 PLATFORMS += coco
-PLATFORMS += msx
+PLATFORMS += msxrom
 #PLATFORMS += rc2014
 PLATFORMS += vic20
 
@@ -49,3 +49,5 @@ include mekkogx/toplevel-rules.mk
 #   apple2/disk: apple2/custom-step1 apple2/custom-step2
 
 EXTRA_C_DEPS_COCO = .get_hirestxt_lib
+LDFLAGS_EXTRA_MSXROM += --generic-console -lndos
+#LDFLAGS_EXTRA_ATARI = -C src/atari/atari.cfg
